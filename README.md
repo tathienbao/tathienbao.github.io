@@ -19,4 +19,4 @@ The personal profile page provides a visual representation of a user's experienc
 
 ## Getting Started
 
-To view the project, you can either use the Live Server extension in Visual Studio Code or visit the deployed site at [tathienbao.space](http://tathienbao.space).
+To view the project, you can either use the Live Server extension in Visual Studio Code or visit the deployed site at https://tathienbao.github.io/.
