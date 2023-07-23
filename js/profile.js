@@ -223,6 +223,10 @@ function createTimeline(thicc, smoll, data) {
     .domain([0, d3.max(data.data.user[0].timeline, (d) => d.amount)])
     .range(["#3366cc", "#cc3366"]);
 
+  const y = d3.scaleLinear()
+    .domain([0, d3.max(data.data.user[0].timeline, (d) => d.amount)])
+    .range([height, 0]);
+
   svg
     .selectAll(".dot")
     .data(mergedData)
@@ -231,7 +235,7 @@ function createTimeline(thicc, smoll, data) {
     .attr("class", "dot")
     .attr("r", (d) => 5)
     .attr("cx", (d) => x(new Date(d[0].createdAt)))
-    .attr("cy", height)
+    .attr("cy", (d) => y(d[0].amount))
     .attr("fill", (d) => colorScale(d[0].amount)) // Fill dots with color based on amount
     .on("mouseover", function (event, d) {
       tooltip.transition().duration(200).style("opacity", 0.9);
