@@ -274,6 +274,17 @@ function createTimeline(thicc, smoll, data) {
     .on("mouseout", function (d) {
       tooltip.transition().duration(500).style("opacity", 0);
     });
+
+  const line = d3.line()
+    .x((d) => x(new Date(d[0].createdAt)))
+    .y((d) => y(d[0].amount));
+
+  svg.append("path")
+    .datum(mergedData)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 1.5)
+    .attr("d", line);
 }
 
 function displayUserLevel(level) {
